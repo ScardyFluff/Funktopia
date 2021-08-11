@@ -36,6 +36,7 @@ These are the Tools and Guides that helped us make the Mod!
  - [Command Line Basics by ninjamuffin99](https://ninjamuffin99.newgrounds.com/news/post/1090480)
 
 # Credits
+
 ### Friday Night Funkin'
  - [ninjamuffin99](https://twitter.com/ninja_muffin99) - Programmer
  - [PhantomArcade3K](https://twitter.com/phantomarcade3k) - Artist
@@ -44,7 +45,7 @@ These are the Tools and Guides that helped us make the Mod!
 
 ### Kade Engine
  - [KadeDeveloper](https://twitter.com/KadeDeveloper) - Programmer
- - ...You can find the rest on Kade Engine's Github Page. (They are a bunch!)
+ - ...You can find the rest on Kade Engine's Github Page. (They're a bunch!)
 
 ### Funktopia
  - [ScardyFluff]() - Programmer/Artist
