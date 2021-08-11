@@ -4,7 +4,7 @@
 # Funktopia: A Friday Night Funkin' Miitopia Mod
 
 IF YOU MAKE A MOD AND DISTRIBUTE A MODIFIED / RECOMIPLED VERSION, YOU MUST OPEN SOURCE YOUR MOD AS WELL!
-This is the repository for Funktopia! A mod of Friday Night Funkin's Kade Engine!
+This is the repository for Funktopia! A mod of Friday Night Funkin's Kade Engine! Which, in itself, is a mod!
 
 ## Friday Night Funkin'
 
