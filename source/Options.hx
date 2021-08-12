@@ -142,7 +142,7 @@ class GraphicLoading extends Option
 
 }
 
-class DownscrollOption extends Option
+class EditorRes extends Option
 {
 	public function new(desc:String)
 	{
@@ -152,15 +152,17 @@ class DownscrollOption extends Option
 
 	public override function press():Bool
 	{
-		FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
+		FlxG.save.data.editor = !FlxG.save.data.editor;
+		
 		display = updateDisplay();
 		return true;
 	}
 
 	private override function updateDisplay():String
 	{
-		return FlxG.save.data.downscroll ? "Downscroll" : "Upscroll";
+		return  FlxG.save.data.editor ? "Show Editor Grid" : "Do not Show Editor Grid";
 	}
+
 }
 
 class FreeplayCutsceneOption extends Option
@@ -202,6 +204,27 @@ class StoryCutsceneOption extends Option
 	private override function updateDisplay():String
 	{
 		return FlxG.save.data.storycut ? "Don't skip Story Mode intros" : "Skip Story Mode intros";
+	}
+}
+
+class DownscrollOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return FlxG.save.data.downscroll ? "Downscroll" : "Upscroll";
 	}
 }
 
@@ -843,6 +866,7 @@ class LockWeeksOption extends Option
 		}
 		FlxG.save.data.weekUnlocked = 1;
 		StoryMenuState.weekUnlocked = [true, true];
+		confirm = false;
 		trace('Weeks Locked');
 		display = updateDisplay();
 		return true;
@@ -915,6 +939,8 @@ class ResetSettings extends Option
 		FlxG.save.data.downscroll = null;
 		FlxG.save.data.freeplaycut = null;
 		FlxG.save.data.storycut = null;
+		FlxG.save.data.antialiasing = null;
+		FlxG.save.data.missSounds = null;
 		FlxG.save.data.dfjk = null;
 		FlxG.save.data.accuracyDisplay = null;
 		FlxG.save.data.offset = null;
@@ -930,6 +956,7 @@ class ResetSettings extends Option
 		FlxG.save.data.watermark = null;
 		FlxG.save.data.ghost = null;
 		FlxG.save.data.distractions = null;
+		FlxG.save.data.stepMania = null;
 		FlxG.save.data.flashing = null;
 		FlxG.save.data.resetButton = null;
 		FlxG.save.data.botplay = null;
@@ -937,7 +964,12 @@ class ResetSettings extends Option
 		FlxG.save.data.strumline = null;
 		FlxG.save.data.customStrumLine = null;
 		FlxG.save.data.camzoom = null;
-		FlxG.save.data.stepMania = null;
+		FlxG.save.data.scoreScreen = null;
+		FlxG.save.data.inputShow = null;
+		FlxG.save.data.optimize = null;
+		FlxG.save.data.cacheImages = null;
+		FlxG.save.data.editor = null;
+
 		KadeEngineData.initSave();
 		confirm = false;
 		trace('All settings have been reset');

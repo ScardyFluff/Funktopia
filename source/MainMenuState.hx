@@ -29,7 +29,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -40,7 +40,7 @@ class MainMenuState extends MusicBeatState
 
 	public static var nightly:String = "";
 
-	public static var kadeEngineVer:String = "1.6";// + nightly;
+	public static var kadeEngineVer:String = "1.6.1";// + nightly;
 	public static var gameVer:String = "0.2.7.1";
 
 	var magenta:FlxSprite;
@@ -189,7 +189,7 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				if (optionShit[curSelected] == 'Credits')
+				if (optionShit[curSelected] == 'donate')
 				{
 					fancyOpenURL("https://ninja-muffin24.itch.io/funkin");
 				}
