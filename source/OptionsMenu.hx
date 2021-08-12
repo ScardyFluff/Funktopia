@@ -38,7 +38,7 @@ class OptionsMenu extends MusicBeatState
 			new ResetButtonOption("Make pressing R fail you."),
 			// new OffsetMenu("Get a note offset based off of your inputs!"),
 			new FreeplayCutsceneOption("Skip cutscenes while in Freeplay."),
-			new StoryCutsceneOption("Skip cutscenes while in Story Mode.")
+			new StoryCutsceneOption("Skip cutscenes while in Story Mode."),
 			new CustomizeGameplay("Drag and drop gameplay modules to your prefered positions!")
 		]),
 		new OptionCategory("Appearance", [
