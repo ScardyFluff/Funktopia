@@ -381,35 +381,35 @@ class Character extends FlxSprite
 				loadOffsetFile(curCharacter);
 
 				playAnim('idle');
-		
-			case 'debuggy':
-				var tex = Paths.getSparrowAtlas('debuggy','shared',true);
-				frames = tex;
 
-				trace(tex.frames.length);
-
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
-
-				animation.addByPrefix('firstDeath', "BF dies", 24, false);
-				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, false);
-				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
-
-				animation.addByPrefix('scared', 'BF idle shaking', 24);
-
-				loadOffsetFile(curCharacter);
-
-				playAnim('idle');
-
-				flipX = true;
+				case 'bfdebug':
+					var tex = Paths.getSparrowAtlas('bfdebug','shared', true);
+					frames = tex;
+	
+					trace(tex.frames.length);
+	
+					animation.addByPrefix('idle', 'TEST idle dance', 24, false);
+					animation.addByPrefix('singUP', 'TEST NOTE UP0', 24, false);
+					animation.addByPrefix('singLEFT', 'TEST NOTE LEFT0', 24, false);
+					animation.addByPrefix('singRIGHT', 'TEST NOTE RIGHT0', 24, false);
+					animation.addByPrefix('singDOWN', 'TEST NOTE DOWN0', 24, false);
+					animation.addByPrefix('singUPmiss', 'TEST NOTE UP MISS', 24, false);
+					animation.addByPrefix('singLEFTmiss', 'TEST NOTE LEFT MISS', 24, false);
+					animation.addByPrefix('singRIGHTmiss', 'TEST NOTE RIGHT MISS', 24, false);
+					animation.addByPrefix('singDOWNmiss', 'TEST NOTE DOWN MISS', 24, false);
+					animation.addByPrefix('hey', 'TEST HEY', 24, false);
+	
+					animation.addByPrefix('firstDeath', "TEST dies", 24, false);
+					animation.addByPrefix('deathLoop', "TEST Dead Loop", 24, false);
+					animation.addByPrefix('deathConfirm', "TEST Dead confirm", 24, false);
+	
+					animation.addByPrefix('scared', 'TEST idle shaking', 24);
+	
+					loadOffsetFile(curCharacter);
+	
+					playAnim('idle');
+	
+					flipX = true;
 		}
 
 		dance();

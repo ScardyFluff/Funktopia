@@ -30,7 +30,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	var portraitLeft:FlxSprite;
 	var portraitRight:FlxSprite;
-	var portraitRightdebuggy:FlxSprite;
+	var portraitRightbfdebug:FlxSprite;
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
@@ -118,13 +118,13 @@ class DialogueBox extends FlxSpriteGroup
 		add(portraitRight);
 		portraitRight.visible = false;
 
-		portraitRightdebuggy = new FlxSprite(0, 40);
-		portraitRightdebuggy.frames = Paths.getSparrowAtlas('portraits/debuggyPortrait');
-		portraitRightdebuggy.animation.addByPrefix('enter', 'Boyfriend portrait enter', 24, false);
-		portraitRightdebuggy.updateHitbox();
-		portraitRightdebuggy.scrollFactor.set();
-		add(portraitRightdebuggy);
-		portraitRightdebuggy.visible = false;
+		portraitRightbfdebug = new FlxSprite(0, 40);
+		portraitRightbfdebug.frames = Paths.getSparrowAtlas('portraits/bfdebugPortrait');
+		portraitRightbfdebug.animation.addByPrefix('enter', 'TEST portrait enter', 24, false);
+		portraitRightbfdebug.updateHitbox();
+		portraitRightbfdebug.scrollFactor.set();
+		add(portraitRightbfdebug);
+		portraitRightbfdebug.visible = false;
 
 		box.animation.play('normalOpen');
 		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
@@ -134,8 +134,8 @@ class DialogueBox extends FlxSpriteGroup
 		box.screenCenter(X);
 		portraitLeft.screenCenter(X);
 
-		handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
-		add(handSelect);
+		//handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
+		//add(handSelect);
 
 
 		if (!talkingRight)
@@ -250,7 +250,7 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			case 'dad':
 				portraitRight.visible = false;
-				portraitRightdebuggy.visible = false;
+				portraitRightbfdebug.visible = false;
 				if (!portraitLeft.visible)
 					{
 						portraitLeft.visible = true;
@@ -259,20 +259,20 @@ class DialogueBox extends FlxSpriteGroup
 
 			case 'bf':
 				portraitLeft.visible = false;
-				portraitRightdebuggy.visible = false;
+				portraitRightbfdebug.visible = false;
 				if (!portraitRight.visible)
 					{
 						portraitRight.visible = true;
 						portraitRight.animation.play('enter');
 					}
 
-			case 'bf2':
+			case 'test':
 				portraitLeft.visible = false;
 				portraitRight.visible = false;
-				if (!portraitRightdebuggy.visible)
+				if (!portraitRightbfdebug.visible)
 					{
-						portraitRightdebuggy.visible = true;
-						portraitRightdebuggy.animation.play('enter');
+						portraitRightbfdebug.visible = true;
+						portraitRightbfdebug.animation.play('enter');
 					}
 	}
 }
