@@ -248,7 +248,7 @@ class DialogueBox extends FlxSpriteGroup
 
 		switch (curCharacter)
 		{
-			case 'dad':
+			case 'opponent':
 				portraitRight.visible = false;
 				portraitRightbfdebug.visible = false;
 				if (!portraitLeft.visible)
@@ -257,7 +257,7 @@ class DialogueBox extends FlxSpriteGroup
 						portraitLeft.animation.play('enter');
 					}
 
-			case 'bf':
+			case 'player':
 				portraitLeft.visible = false;
 				portraitRightbfdebug.visible = false;
 				if (!portraitRight.visible)
