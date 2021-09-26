@@ -382,28 +382,28 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-				case 'bfdebug':
-					var tex = Paths.getSparrowAtlas('bfdebug','shared', true);
+				case 'player':
+					var tex = Paths.getSparrowAtlas('player','shared',true);
 					frames = tex;
 	
 					trace(tex.frames.length);
 	
-					animation.addByPrefix('idle', 'TEST idle dance', 24, false);
-					animation.addByPrefix('singUP', 'TEST NOTE UP0', 24, false);
-					animation.addByPrefix('singLEFT', 'TEST NOTE LEFT0', 24, false);
-					animation.addByPrefix('singRIGHT', 'TEST NOTE RIGHT0', 24, false);
-					animation.addByPrefix('singDOWN', 'TEST NOTE DOWN0', 24, false);
-					animation.addByPrefix('singUPmiss', 'TEST NOTE UP MISS', 24, false);
-					animation.addByPrefix('singLEFTmiss', 'TEST NOTE LEFT MISS', 24, false);
-					animation.addByPrefix('singRIGHTmiss', 'TEST NOTE RIGHT MISS', 24, false);
-					animation.addByPrefix('singDOWNmiss', 'TEST NOTE DOWN MISS', 24, false);
-					animation.addByPrefix('hey', 'TEST HEY', 24, false);
+					animation.addByPrefix('idle', 'PLAYER idle dance', 24, false);
+					animation.addByPrefix('singUP', 'PLAYER NOTE UP0', 24, false);
+					animation.addByPrefix('singLEFT', 'PLAYER NOTE LEFT0', 24, false);
+					animation.addByPrefix('singRIGHT', 'PLAYER NOTE RIGHT0', 24, false);
+					animation.addByPrefix('singDOWN', 'PLAYER NOTE DOWN0', 24, false);
+					animation.addByPrefix('singUPmiss', 'PLAYER NOTE UP MISS', 24, false);
+					animation.addByPrefix('singLEFTmiss', 'PLAYER NOTE LEFT MISS', 24, false);
+					animation.addByPrefix('singRIGHTmiss', 'PLAYER NOTE RIGHT MISS', 24, false);
+					animation.addByPrefix('singDOWNmiss', 'PLAYER NOTE DOWN MISS', 24, false);
+					animation.addByPrefix('hey', 'PLAYER HEY', 24, false);
 	
-					animation.addByPrefix('firstDeath', "TEST dies", 24, false);
-					animation.addByPrefix('deathLoop', "TEST Dead Loop", 24, false);
-					animation.addByPrefix('deathConfirm', "TEST Dead confirm", 24, false);
+					animation.addByPrefix('firstDeath', "PLAYER dies", 24, false);
+					animation.addByPrefix('deathLoop', "PLAYER Dead Loop", 24, false);
+					animation.addByPrefix('deathConfirm', "PLAYER Dead confirm", 24, false);
 	
-					animation.addByPrefix('scared', 'TEST idle shaking', 24);
+					animation.addByPrefix('scared', 'PLAYER idle shaking', 24);
 	
 					loadOffsetFile(curCharacter);
 	
@@ -419,7 +419,7 @@ class Character extends FlxSprite
 			flipX = !flipX;
 
 			// Doesn't flip for BF, since his are already in the right place???
-			if (!curCharacter.startsWith('bf'))
+			if (!curCharacter.startsWith('player'))
 			{
 				// var animArray
 				var oldRight = animation.getByName('singRIGHT').frames;

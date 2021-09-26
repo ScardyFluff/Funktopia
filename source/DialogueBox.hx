@@ -30,7 +30,8 @@ class DialogueBox extends FlxSpriteGroup
 
 	var portraitLeft:FlxSprite;
 	var portraitRight:FlxSprite;
-	var portraitRightbfdebug:FlxSprite;
+	var portraitLeftdebug:FlxSprite;
+	var portraitRightdebug:FlxSprite;
 
 	var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
@@ -118,13 +119,21 @@ class DialogueBox extends FlxSpriteGroup
 		add(portraitRight);
 		portraitRight.visible = false;
 
-		portraitRightbfdebug = new FlxSprite(0, 40);
-		portraitRightbfdebug.frames = Paths.getSparrowAtlas('portraits/bfdebugPortrait');
-		portraitRightbfdebug.animation.addByPrefix('enter', 'TEST portrait enter', 24, false);
-		portraitRightbfdebug.updateHitbox();
-		portraitRightbfdebug.scrollFactor.set();
-		add(portraitRightbfdebug);
-		portraitRightbfdebug.visible = false;
+		portraitLeftdebug = new FlxSprite(-20, 40);
+		portraitLeftdebug.frames = Paths.getSparrowAtlas('portraits/leftDebugPortrait');
+		portraitLeftdebug.animation.addByPrefix('enter', 'left portrait enter', 24, false);
+		portraitLeftdebug.updateHitbox();
+		portraitLeftdebug.scrollFactor.set();
+		add(portraitLeftdebug);
+		portraitLeftdebug.visible = false;
+
+		portraitRightdebug = new FlxSprite(0, 40);
+		portraitRightdebug.frames = Paths.getSparrowAtlas('portraits/rightDebugPortrait');
+		portraitRightdebug.animation.addByPrefix('enter', 'right portrait enter', 24, false);
+		portraitRightdebug.updateHitbox();
+		portraitRightdebug.scrollFactor.set();
+		add(portraitRightdebug);
+		portraitRightdebug.visible = false;
 
 		box.animation.play('normalOpen');
 		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
@@ -144,13 +153,13 @@ class DialogueBox extends FlxSpriteGroup
 		}
 
 		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
-		dropText.font = 'Pixel Arial 11 Bold';
-		dropText.color = 0xFFD89494;
+		dropText.font = 'FOT-Rodin Pro DB';
+		dropText.color = 0xFF454545;
 		add(dropText);
 
 		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
-		swagDialogue.font = 'Pixel Arial 11 Bold';
-		swagDialogue.color = 0xFF3F2021;
+		swagDialogue.font = 'FOT-Rodin Pro DB';
+		swagDialogue.color = 0xFF202020;
 		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(swagDialogue);
 
@@ -250,29 +259,45 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			case 'opponent':
 				portraitRight.visible = false;
-				portraitRightbfdebug.visible = false;
+				portraitLeftdebug.visible = false;
+				portraitRightdebug.visible = false;
 				if (!portraitLeft.visible)
 					{
 						portraitLeft.visible = true;
 						portraitLeft.animation.play('enter');
+						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('ANGRY'), 0.6)];
 					}
 
 			case 'player':
 				portraitLeft.visible = false;
-				portraitRightbfdebug.visible = false;
+				portraitLeftdebug.visible = false;
+				portraitRightdebug.visible = false;
 				if (!portraitRight.visible)
 					{
 						portraitRight.visible = true;
 						portraitRight.animation.play('enter');
 					}
 
-			case 'test':
+			case 'leftTest':
 				portraitLeft.visible = false;
 				portraitRight.visible = false;
-				if (!portraitRightbfdebug.visible)
+				portraitRightdebug.visible = false;
+				if (!portraitRightdebug.visible)
 					{
-						portraitRightbfdebug.visible = true;
-						portraitRightbfdebug.animation.play('enter');
+						portraitLeftdebug.visible = true;
+						portraitRightdebug.animation.play('enter');
+						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('ANGRY'), 0.6)];
+					}
+
+			case 'rightTest':
+				portraitLeft.visible = false;
+				portraitRight.visible = false;
+				portraitLeftdebug.visible = false;
+				if (!portraitRightdebug.visible)
+					{
+						portraitRightdebug.visible = true;
+						portraitRightdebug.animation.play('enter');
+						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('CLAP'), 0.5)];
 					}
 	}
 }

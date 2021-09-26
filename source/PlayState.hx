@@ -895,6 +895,21 @@ class PlayState extends MusicBeatState
 							add(waveSpriteFG);
 						 */
 					}
+				case 'mii':
+					{
+						var idleBeat:Int = 2;
+						defaultCamZoom = 0.9;
+						curStage = 'test';
+						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));
+						if(FlxG.save.data.antialiasing)
+							{
+								bg.antialiasing = true;
+							}
+						bg.scrollFactor.set(0.9, 0.9);
+						bg.active = false;
+						add(bg);
+					}
+
 				default:
 					{
 						defaultCamZoom = 0.9;
@@ -1184,7 +1199,7 @@ class PlayState extends MusicBeatState
 			SONG.song
 			+ " - "
 			+ CoolUtil.difficultyFromInt(storyDifficulty)
-			+ (Main.watermarks ? " | Funktopia " + "1.0" : ""), 16);
+			+ (Main.watermarks ? " | Funktopia " + "1.0.0" : ""), 16);
 		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
 		add(kadeEngineWatermark);
@@ -1216,7 +1231,7 @@ class PlayState extends MusicBeatState
 		}
 		// Literally copy-paste of the above, fu
 		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (PlayStateChangeables.useDownscroll ? 100 : -100), 0,
-			"BOTPLAY", 20);
+			"AUTOPLAY", 20);
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botPlayState.scrollFactor.set();
 		botPlayState.borderSize = 4;
@@ -3550,8 +3565,8 @@ class PlayState extends MusicBeatState
 
 			rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 			rating.screenCenter();
-			rating.y -= 50;
-			rating.x = coolText.x - 125;
+			rating.y -= 30;
+			rating.x = coolText.x - 50;
 
 			if (FlxG.save.data.changedHit)
 			{
@@ -3583,10 +3598,10 @@ class PlayState extends MusicBeatState
 				case 'sick':
 					currentTimingShown.color = FlxColor.CYAN;
 			}
-			currentTimingShown.borderStyle = OUTLINE;
-			currentTimingShown.borderSize = 1;
-			currentTimingShown.borderColor = FlxColor.BLACK;
-			currentTimingShown.text = msTiming + "ms";
+			//currentTimingShown.borderStyle = OUTLINE;
+			//currentTimingShown.borderSize = 1;
+			//currentTimingShown.borderColor = FlxColor.BLACK;
+			currentTimingShown.text = " ";
 			currentTimingShown.size = 20;
 
 			if (msTiming >= 0.03 && offsetTesting)
@@ -4496,7 +4511,7 @@ class PlayState extends MusicBeatState
 			luaModchart.executeState('beatHit', [curBeat]);
 		}
 		#end
-
+/*
 		if (curSong == 'Tutorial' && opponent.curCharacter == 'gf')
 		{
 			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
@@ -4509,7 +4524,7 @@ class PlayState extends MusicBeatState
 					opponent.playAnim('danceRight', true);
 			}
 		}
-
+*/
 		if (SONG.notes[Math.floor(curStep / 16)] != null)
 		{
 			// else

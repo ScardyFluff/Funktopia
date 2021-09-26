@@ -1,3 +1,2 @@
-:opponent:Opponent
-:player:Player
-:test:eeby deeby
+:leftTest:Opponent
+:rightTest:Player
