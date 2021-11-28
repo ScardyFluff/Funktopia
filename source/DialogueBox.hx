@@ -297,7 +297,7 @@ class DialogueBox extends FlxSpriteGroup
 					{
 						portraitRightdebug.visible = true;
 						portraitRightdebug.animation.play('enter');
-						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('CLAP'), 0.5)];
+						swagDialogue.sounds = [FlxG.sound.load(Paths.sound('CLAP'), 0.6)];
 					}
 	}
 }

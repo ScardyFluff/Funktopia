@@ -191,8 +191,8 @@ class PlayState extends MusicBeatState
 
 	var notesHitArray:Array<Date> = [];
 	var currentFrames:Int = 0;
-	var idleToBeat:Bool = true; // change if player and opponent would idle to the beat of the song
-	var idleBeat:Int = 1; // how frequently player and opponent would play their idle animation(1 - every beat, 2 - every 2 beats and so on)
+	var idleToBeat:Bool = false; // change if player and opponent would idle to the beat of the song
+	var idleBeat:Int = 2; // how frequently player and opponent would play their idle animation(1 - every beat, 2 - every 2 beats and so on)
 
 	public var dialogue:Array<String> = ['opponent:blah blah blah', 'player:coolswag'];
 
@@ -897,7 +897,7 @@ class PlayState extends MusicBeatState
 					}
 				case 'mii':
 					{
-						var idleBeat:Int = 2;
+						//idleBeat = 2;
 						defaultCamZoom = 0.9;
 						curStage = 'test';
 						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));

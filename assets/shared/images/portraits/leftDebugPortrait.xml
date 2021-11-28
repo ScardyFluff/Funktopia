@@ -1,14 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="leftDebugPortrait.png">
-	<!-- Created with Adobe Animate version 20.0.0.17400 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="left portrait enter instance 10000" x="0" y="0" width="1494" height="870"/>
-	<SubTexture name="left portrait enter instance 10001" x="1554" y="0" width="1494" height="870"/>
-	<SubTexture name="left portrait enter instance 10002" x="1554" y="0" width="1494" height="870"/>
-	<SubTexture name="left portrait enter instance 10003" x="0" y="930" width="1494" height="870"/>
-	<SubTexture name="left portrait enter instance 10004" x="0" y="930" width="1494" height="870"/>
-	<SubTexture name="left portrait enter instance 10005" x="1554" y="930" width="1494" height="870"/>
-	<SubTexture name="left portrait enter instance 10006" x="1554" y="930" width="1494" height="870"/>
-	<SubTexture name="left portrait enter instance 10007" x="1554" y="930" width="1494" height="870"/>
-	<SubTexture name="left portrait enter instance 10008" x="1554" y="930" width="1494" height="870"/>
+	<SubTexture name="left portrait enter 0000" x="0" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0001" x="634" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0002" x="634" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0003" x="1268" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0004" x="1268" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0005" x="1902" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0006" x="1902" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0007" x="1902" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0008" x="1902" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
 </TextureAtlas>
