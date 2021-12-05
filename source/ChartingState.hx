@@ -168,7 +168,7 @@ class ChartingState extends MusicBeatState
 				needsVoices: true,
 				player1: 'bf',
 				player2: 'dad',
-				gfVersion: 'gf',
+				speakerVer: 'gf',
 				noteStyle: 'normal',
 				stage: 'stage',
 				speed: 1,
@@ -1057,7 +1057,7 @@ class ChartingState extends MusicBeatState
 		});
 
 		var characters:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/characterList'));
-		var gfVersions:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/gfVersionList'));
+		var speakerVers:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/speakerVerList'));
 		var stages:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/stageList'));
 		var noteStyles:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/noteStyleList'));
 
@@ -1077,13 +1077,13 @@ class ChartingState extends MusicBeatState
 
 		var player2Label = new FlxText(140,80,64,'Player 2');
 
-		var gfVersionDropDown = new FlxUIDropDownMenu(10, 200, FlxUIDropDownMenu.makeStrIdLabelArray(gfVersions, true), function(gfVersion:String)
+		var speakerVerDropDown = new FlxUIDropDownMenu(10, 200, FlxUIDropDownMenu.makeStrIdLabelArray(speakerVers, true), function(speakerVer:String)
 			{
-				_song.gfVersion = gfVersions[Std.parseInt(gfVersion)];
+				_song.speakerVer = speakerVers[Std.parseInt(speakerVer)];
 			});
-		gfVersionDropDown.selectedLabel = _song.gfVersion;
+		speakerVerDropDown.selectedLabel = _song.speakerVer;
 
-		var gfVersionLabel = new FlxText(10,180,64,'Girlfriend');
+		var speakerVerLabel = new FlxText(10,180,64,'Speaker');
 
 		var stageDropDown = new FlxUIDropDownMenu(140, 200, FlxUIDropDownMenu.makeStrIdLabelArray(stages, true), function(stage:String)
 			{
@@ -1133,8 +1133,8 @@ class ChartingState extends MusicBeatState
 		tab_group_assets.name = "Assets";
 		tab_group_assets.add(noteStyleDropDown);
 		tab_group_assets.add(noteStyleLabel);
-		tab_group_assets.add(gfVersionDropDown);
-		tab_group_assets.add(gfVersionLabel);
+		tab_group_assets.add(speakerVerDropDown);
+		tab_group_assets.add(speakerVerLabel);
 		tab_group_assets.add(stageDropDown);
 		tab_group_assets.add(stageLabel);
 		tab_group_assets.add(player1DropDown);

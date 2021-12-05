@@ -129,7 +129,7 @@ class PlayState extends MusicBeatState
 	public var originalX:Float;
 
 	public static var opponent:Character;
-	public static var gf:Character;
+	public static var speaker:Character;
 	public static var player:Player;
 
 	public var notes:FlxTypedGroup<Note>;
@@ -151,7 +151,7 @@ class PlayState extends MusicBeatState
 	private var camZooming:Bool = false;
 	private var curSong:String = "";
 
-	private var gfSpeed:Int = 1;
+	private var speakerSpeed:Int = 1;
 
 	public var health:Float = 1; // making public because sethealth doesnt work without it
 
@@ -948,41 +948,41 @@ class PlayState extends MusicBeatState
 					}
 			}
 		}
-		// defaults if no gf was found in chart
-		var gfCheck:String = 'gf';
+		// defaults if no speaker was found in chart
+		var speakerCheck:String = 'gf';
 
-		if (SONG.gfVersion == null)
+		if (SONG.speakerVer == null)
 		{
 			switch (storyWeek)
 			{
 				case 4:
-					gfCheck = 'gf-car';
+					speakerCheck = 'gf-car';
 				case 5:
-					gfCheck = 'gf-christmas';
+					speakerCheck = 'gf-christmas';
 				case 6:
-					gfCheck = 'gf-pixel';
+					speakerCheck = 'gf-pixel';
 			}
 		}
 		else
 		{
-			gfCheck = SONG.gfVersion;
+			speakerCheck = SONG.speakerVer;
 		}
 
-		var curGf:String = '';
-		switch (gfCheck)
+		var curSpeaker:String = '';
+		switch (speakerCheck)
 		{
 			case 'gf-car':
-				curGf = 'gf-car';
+				curSpeaker = 'gf-car';
 			case 'gf-christmas':
-				curGf = 'gf-christmas';
+				curSpeaker = 'gf-christmas';
 			case 'gf-pixel':
-				curGf = 'gf-pixel';
+				curSpeaker = 'gf-pixel';
 			default:
-				curGf = 'gf';
+				curSpeaker = 'gf';
 		}
 
-		gf = new Character(400, 130, curGf);
-		gf.scrollFactor.set(0.95, 0.95);
+		speaker = new Character(400, 130, curSpeaker);
+		speaker.scrollFactor.set(0.95, 0.95);
 
 		opponent = new Character(100, 100, SONG.player2);
 
@@ -991,8 +991,8 @@ class PlayState extends MusicBeatState
 		switch (SONG.player2)
 		{
 			case 'gf':
-				opponent.setPosition(gf.x, gf.y);
-				gf.visible = false;
+				opponent.setPosition(speaker.x, speaker.y);
+				speaker.visible = false;
 				if (isStoryMode)
 				{
 					camPos.x += 600;
@@ -1062,18 +1062,18 @@ class PlayState extends MusicBeatState
 			case 'school':
 				player.x += 200;
 				player.y += 220;
-				gf.x += 180;
-				gf.y += 300;
+				speaker.x += 180;
+				speaker.y += 300;
 			case 'schoolEvil':
 				player.x += 200;
 				player.y += 220;
-				gf.x += 180;
-				gf.y += 300;
+				speaker.x += 180;
+				speaker.y += 300;
 		}
 
 		if (!PlayStateChangeables.Optimize)
 		{
-			add(gf);
+			add(speaker);
 
 			// Shitty layering but whatev it works LOL
 			if (curStage == 'limo')
@@ -1519,7 +1519,7 @@ class PlayState extends MusicBeatState
 		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 		{
 			opponent.dance();
-			gf.dance();
+			speaker.dance();
 			player.playAnim('idle');
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
@@ -2675,13 +2675,13 @@ class PlayState extends MusicBeatState
 
 		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 		{
-			// Make sure Girlfriend cheers only for certain songs
+			// Make sure speaker cheers only for certain songs
 			if (allowedToHeadbang)
 			{
-				// Don't animate GF if something else is already animating her (eg. train passing)
-				if (gf.animation.curAnim.name == 'danceLeft'
-					|| gf.animation.curAnim.name == 'danceRight'
-					|| gf.animation.curAnim.name == 'idle')
+				// Don't animate speaker if something else is already animating them (eg. train passing)
+				if (speaker.animation.curAnim.name == 'danceLeft'
+					|| speaker.animation.curAnim.name == 'danceRight'
+					|| speaker.animation.curAnim.name == 'idle')
 				{
 					// Per song treatment since some songs will only have the 'Hey' at certain times
 					switch (curSong)
@@ -2691,7 +2691,7 @@ class PlayState extends MusicBeatState
 								// General duration of the song
 								if (curBeat < 250)
 								{
-									// Beats to skip or to stop GF from cheering
+									// Beats to skip or to stop speaker from cheering
 									if (curBeat != 184 && curBeat != 216)
 									{
 										if (curBeat % 16 == 8)
@@ -2699,7 +2699,7 @@ class PlayState extends MusicBeatState
 											// Just a garantee that it'll trigger just once
 											if (!triggeredAlready)
 											{
-												gf.playAnim('cheer');
+												speaker.playAnim('cheer');
 												triggeredAlready = true;
 											}
 										}
@@ -2717,7 +2717,7 @@ class PlayState extends MusicBeatState
 									{
 										if (!triggeredAlready)
 										{
-											gf.playAnim('cheer');
+											speaker.playAnim('cheer');
 											triggeredAlready = true;
 										}
 									}
@@ -2735,7 +2735,7 @@ class PlayState extends MusicBeatState
 										{
 											if (!triggeredAlready)
 											{
-												gf.playAnim('cheer');
+												speaker.playAnim('cheer');
 												triggeredAlready = true;
 											}
 										}
@@ -2754,7 +2754,7 @@ class PlayState extends MusicBeatState
 										{
 											if (!triggeredAlready)
 											{
-												gf.playAnim('cheer');
+												speaker.playAnim('cheer');
 												triggeredAlready = true;
 											}
 										}
@@ -2771,7 +2771,7 @@ class PlayState extends MusicBeatState
 									{
 										if (!triggeredAlready)
 										{
-											gf.playAnim('cheer');
+											speaker.playAnim('cheer');
 											triggeredAlready = true;
 										}
 									}
@@ -2868,13 +2868,13 @@ class PlayState extends MusicBeatState
 			{
 				case 16:
 					camZooming = true;
-					gfSpeed = 2;
+					speakerSpeed = 2;
 				case 48:
-					gfSpeed = 1;
+					speakerSpeed = 1;
 				case 80:
-					gfSpeed = 2;
+					speakerSpeed = 2;
 				case 112:
-					gfSpeed = 1;
+					speakerSpeed = 1;
 				case 163:
 					// FlxG.sound.music.stop();
 					// FlxG.switchState(new TitleState());
@@ -4084,11 +4084,11 @@ class PlayState extends MusicBeatState
 
 		videoSprite.setGraphicSize(Std.int(videoSprite.width * 1.2));
 
-		remove(gf);
+		remove(speaker);
 		remove(player);
 		remove(opponent);
 		add(videoSprite);
-		add(gf);
+		add(speaker);
 		add(player);
 		add(opponent);
 
@@ -4106,9 +4106,9 @@ class PlayState extends MusicBeatState
 		if (!player.stunned)
 		{
 			//health -= 0.2;
-			if (combo > 5 && gf.animOffsets.exists('sad'))
+			if (combo > 5 && speaker.animOffsets.exists('sad'))
 			{
-				gf.playAnim('sad');
+				speaker.playAnim('sad');
 			}
 			combo = 0;
 			misses++;
@@ -4400,7 +4400,7 @@ class PlayState extends MusicBeatState
 			if (trainSound.time >= 4700)
 			{
 				startedMoving = true;
-				gf.playAnim('hairBlow');
+				speaker.playAnim('hairBlow');
 			}
 
 			if (startedMoving)
@@ -4426,7 +4426,7 @@ class PlayState extends MusicBeatState
 	{
 		if (FlxG.save.data.distractions)
 		{
-			gf.playAnim('hairFall');
+			speaker.playAnim('hairFall');
 			phillyTrain.x = FlxG.width + 200;
 			trainMoving = false;
 			// trainSound.stop();
@@ -4446,7 +4446,7 @@ class PlayState extends MusicBeatState
 		lightningOffset = FlxG.random.int(8, 24);
 
 		player.playAnim('scared', true);
-		gf.playAnim('scared', true);
+		speaker.playAnim('scared', true);
 	}
 
 	var danced:Bool = false;
@@ -4560,9 +4560,9 @@ class PlayState extends MusicBeatState
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
 
-		if (curBeat % gfSpeed == 0)
+		if (curBeat % speakerSpeed == 0)
 		{
-			gf.dance();
+			speaker.dance();
 		}
 
 		if (!player.animation.curAnim.name.startsWith("sing") && (curBeat % idleBeat == 0 || !idleToBeat))

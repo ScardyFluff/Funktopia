@@ -213,7 +213,7 @@ class ModchartState
 				return PlayState.player;
 			case 'girlfriend':
                 @:privateAccess
-				return PlayState.gf;
+				return PlayState.speaker;
 			case 'dad':
                 @:privateAccess
 				return PlayState.opponent;
@@ -330,14 +330,14 @@ class ModchartState
         {
             if (drawBehind)
             {
-                PlayState.instance.removeObject(PlayState.gf);
+                PlayState.instance.removeObject(PlayState.speaker);
                 PlayState.instance.removeObject(PlayState.player);
                 PlayState.instance.removeObject(PlayState.opponent);
             }
             PlayState.instance.addObject(sprite);
             if (drawBehind)
             {
-                PlayState.instance.addObject(PlayState.gf);
+                PlayState.instance.addObject(PlayState.speaker);
                 PlayState.instance.addObject(PlayState.player);
                 PlayState.instance.addObject(PlayState.opponent);
             }

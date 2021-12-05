@@ -33,7 +33,7 @@ class GameplayCustomizeState extends MusicBeatState
 
     var player:Player;
     var opponent:Character;
-    var gf:Character;
+    var speaker:Character;
 
     var strumLine:FlxSprite;
     var strumLineNotes:FlxTypedGroup<FlxSprite>;
@@ -75,14 +75,14 @@ class GameplayCustomizeState extends MusicBeatState
 
         player = new Player(770, 450, 'bf');
 
-        gf = new Character(400, 130, 'gf');
-		gf.scrollFactor.set(0.95, 0.95);
+        speaker = new Character(400, 130, 'gf');
+		speaker.scrollFactor.set(0.95, 0.95);
 
 		var camPos:FlxPoint = new FlxPoint(opponent.getGraphicMidpoint().x + 400, opponent.getGraphicMidpoint().y);
 
 		camFollow.setPosition(camPos.x, camPos.y);
 
-        add(gf);
+        add(speaker);
         add(player);
         add(opponent);
 
@@ -195,7 +195,7 @@ class GameplayCustomizeState extends MusicBeatState
 
         player.playAnim('idle', true);
         opponent.dance(true);
-        gf.dance();
+        speaker.dance();
 
         FlxG.camera.zoom += 0.015;
         camHUD.zoom += 0.010;

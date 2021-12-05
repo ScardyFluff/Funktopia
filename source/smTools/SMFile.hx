@@ -118,7 +118,7 @@ class SMFile
             needsVoices: true,
             player1: 'bf',
             player2: 'gf',
-            gfVersion: 'gf',
+            speakerVer: 'gf',
             noteStyle: 'normal',
             stage: 'stage',
             speed: 1.0,
