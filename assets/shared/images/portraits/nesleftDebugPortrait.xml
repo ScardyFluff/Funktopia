@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="leftDebugPortrait.png">
+	<SubTexture name="left portrait enter 0000" x="0" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0001" x="634" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0002" x="634" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0003" x="1268" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0004" x="1268" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0005" x="1902" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0006" x="1902" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0007" x="1902" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+	<SubTexture name="left portrait enter 0008" x="1902" y="0" width="634" height="534" frameX="0" frameY="0" frameWidth="0" frameHeight="0" />
+</TextureAtlas>

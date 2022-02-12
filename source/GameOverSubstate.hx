@@ -9,6 +9,7 @@ import flixel.util.FlxTimer;
 
 class GameOverSubstate extends MusicBeatSubstate
 {
+	public static var skipCutscene:Bool = false;
 	var player:Player;
 	var camFollow:FlxObject;
 
@@ -56,7 +57,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (controls.ACCEPT)
 		{
-			endBullshit();
+					skipCutscene = true;
+					endBullshit();
 		}
 
 		if (controls.BACK)

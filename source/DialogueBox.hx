@@ -3,10 +3,10 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.text.FlxTypeText;
-import flixel.graphics.frames.FlxAtlasFrames;
+//import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxSpriteGroup;
-import flixel.input.FlxKeyManager;
-import flixel.text.FlxText;
+//import flixel.input.FlxKeyManager;
+//import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 
@@ -24,7 +24,7 @@ class DialogueBox extends FlxSpriteGroup
 	// SECOND DIALOGUE FOR THE PIXEL SHIT INSTEAD???
 	var swagDialogue:FlxTypeText;
 
-	var dropText:FlxText;
+	//var dropText:FlxText;
 
 	public var finishThing:Void->Void;
 
@@ -33,7 +33,7 @@ class DialogueBox extends FlxSpriteGroup
 	var portraitLeftdebug:FlxSprite;
 	var portraitRightdebug:FlxSprite;
 
-	var handSelect:FlxSprite;
+	//var handSelect:FlxSprite;
 	var bgFade:FlxSprite;
 
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
@@ -72,6 +72,7 @@ class DialogueBox extends FlxSpriteGroup
 				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
 				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
 				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
+
 			case 'roses':
 				hasDialog = true;
 				FlxG.sound.play(Paths.sound('ANGRY_TEXT_BOX'));
@@ -89,11 +90,30 @@ class DialogueBox extends FlxSpriteGroup
 				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
 				face.setGraphicSize(Std.int(face.width * 6));
 				add(face);
+
 			case 'mii':
 					hasDialog = true;
-					box.frames = Paths.getSparrowAtlas('bubble_test');
+					box.frames = Paths.getSparrowAtlas('textboxes/bubble_test');
 					box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
 					box.animation.addByIndices('normal', 'Text Box Idle', [4], "", 24);
+
+			case 'bopeebo':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('textboxes/bubble_test');
+				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
+				box.animation.addByIndices('normal', 'Text Box Idle', [4], "", 24);
+
+			case 'fresh':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('textboxes/bubble_test');
+				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
+				box.animation.addByIndices('normal', 'Text Box Idle', [4], "", 24);
+
+			case 'milf':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('textboxes/bubble_test');
+				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
+				box.animation.addByIndices('normal', 'Text Box Idle', [4], "", 24);
 		}
 
 		this.dialogueList = dialogueList;
@@ -119,7 +139,7 @@ class DialogueBox extends FlxSpriteGroup
 		add(portraitRight);
 		portraitRight.visible = false;
 
-		portraitLeftdebug = new FlxSprite(-20, 40);
+		portraitLeftdebug = new FlxSprite(0, 40);
 		portraitLeftdebug.frames = Paths.getSparrowAtlas('portraits/leftDebugPortrait');
 		portraitLeftdebug.animation.addByPrefix('enter', 'left portrait enter', 24, false);
 		portraitLeftdebug.updateHitbox();
@@ -152,15 +172,15 @@ class DialogueBox extends FlxSpriteGroup
 			// box.flipX = true;
 		}
 
-		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
-		dropText.font = 'FOT-Rodin Pro DB';
-		dropText.color = 0xFF454545;
-		add(dropText);
+		//dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
+		//dropText.font = 'FOT-Rodin Pro DB';
+		//dropText.color = 0xFF454545;
+		//add(dropText);
 
 		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
-		swagDialogue.font = 'FOT-Rodin Pro DB';
-		swagDialogue.color = 0xFF202020;
-		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
+		swagDialogue.font = 'Rubik-Regular';
+		swagDialogue.color = 0xFF0C0C0C;
+		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('speech/pixelText'), 0.6)];
 		add(swagDialogue);
 
 		dialogue = new Alphabet(0, 80, "", false, true);
@@ -180,10 +200,10 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			portraitLeft.visible = false;
 			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
+			//dropText.color = FlxColor.BLACK;
 		}
 
-		dropText.text = swagDialogue.text;
+		//dropText.text = swagDialogue.text;
 
 		if (box.animation.curAnim != null)
 		{
@@ -222,7 +242,7 @@ class DialogueBox extends FlxSpriteGroup
 						portraitLeft.visible = false;
 						portraitRight.visible = false;
 						swagDialogue.alpha -= 1 / 5;
-						dropText.alpha = swagDialogue.alpha;
+						//dropText.alpha = swagDialogue.alpha;
 					}, 5);
 
 					new FlxTimer().start(1.2, function(tmr:FlxTimer)

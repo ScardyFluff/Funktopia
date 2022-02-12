@@ -29,7 +29,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options'];
+	var optionShit:Array<String> = ['story mode', 'rush mode', 'freeplay', 'options'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -38,12 +38,19 @@ class MainMenuState extends MusicBeatState
 	var newGaming2:FlxText;
 	public static var firstStart:Bool = true;
 
-	public static var nightly:String = "";
+//	public static var nightly:String = "";
 
+	public static var funktopiaVer:String = "1.0.0";
 	public static var kadeEngineVer:String = "1.6.1";// + nightly;
 	public static var gameVer:String = "0.2.7.1";
 
-	var magenta:FlxSprite;
+	public static var topmenu:Bool = true;
+	public static var storymenu:Bool = false;
+	public static var rushmenu:Bool = false;
+	public static var freeplaymenu:Bool = false;
+	public static var optionsmenu:Bool = false;
+
+	//var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	public static var finishedFunnyMove:Bool = false;
 
@@ -51,7 +58,7 @@ class MainMenuState extends MusicBeatState
 	{
 		#if windows
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Main Menu", null);
 		#end
 
 		if (!FlxG.sound.music.playing)
@@ -61,34 +68,46 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('menuBG'));
-		bg.scrollFactor.x = 0;
-		bg.scrollFactor.y = 0.10;
-		bg.setGraphicSize(Std.int(bg.width * 1.1));
-		bg.updateHitbox();
-		bg.screenCenter();
+		var topbg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('bg_topMenu'));
+		topbg.scrollFactor.x = 0;
+		topbg.scrollFactor.y = 0.10;
+		topbg.setGraphicSize(Std.int(topbg.width * 1.1));
+		topbg.updateHitbox();
+		topbg.screenCenter();
 		if(FlxG.save.data.antialiasing)
 			{
-				bg.antialiasing = true;
+				topbg.antialiasing = true;
 			}
-		add(bg);
+		add(topbg);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.scrollFactor.x = 0;
-		magenta.scrollFactor.y = 0.10;
-		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
+		var topbg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('bg_topMenu'));
+		topbg.scrollFactor.x = 0;
+		topbg.scrollFactor.y = 0.10;
+		topbg.setGraphicSize(Std.int(topbg.width * 1.1));
+		topbg.updateHitbox();
+		topbg.screenCenter();
 		if(FlxG.save.data.antialiasing)
 			{
-				magenta.antialiasing = true;
+				topbg.antialiasing = true;
 			}
-		magenta.color = 0xFFfd719b;
-		add(magenta);
+		add(topbg);
+
+//		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
+//		magenta.scrollFactor.x = 0;
+//		magenta.scrollFactor.y = 0.10;
+//		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
+//		magenta.updateHitbox();
+//		magenta.screenCenter();
+//		magenta.visible = false;
+//		if(FlxG.save.data.antialiasing)
+//			{
+//				magenta.antialiasing = true;
+//			}
+//		magenta.color = 0xFFfd719b;
+//		add(magenta);
 		// magenta.scrollFactor.set();
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
@@ -198,8 +217,8 @@ class MainMenuState extends MusicBeatState
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					
-					if (FlxG.save.data.flashing)
-						FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+					//if (FlxG.save.data.flashing)
+					//	FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
@@ -251,12 +270,13 @@ class MainMenuState extends MusicBeatState
 		{
 			case 'story mode':
 				FlxG.switchState(new StoryMenuState());
-				trace("Story Menu Selected");
+				trace("Story Mode Menu Selected");
+			case 'rush mode':
+				FlxG.switchState(new FreeplayState());
+				trace("Rush Mode Menu Selected");
 			case 'freeplay':
 				FlxG.switchState(new FreeplayState());
-
 				trace("Freeplay Menu Selected");
-
 			case 'options':
 				FlxG.switchState(new OptionsMenu());
 		}

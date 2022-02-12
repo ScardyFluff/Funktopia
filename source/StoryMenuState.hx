@@ -22,13 +22,19 @@ using StringTools;
 
 class StoryMenuState extends MusicBeatState
 {
+	public static var topmenu:Bool = false;
+	public static var storymenu:Bool = true;
+	public static var rushmenu:Bool = false;
+	public static var freeplaymenu:Bool = false;
+	public static var optionsmenu:Bool = false;
+
 	var scoreText:FlxText;
 
 	static function weekData():Array<Dynamic>
 	{
 		return [
 			['Tutorial'],
-			['Bopeebo', 'Fresh', 'Dad Battle'],
+			['Bopeebo', 'Fresh', 'Milf'],
 			['Spookeez', 'South', "Monster"],
 			['Pico', 'Philly Nice', "Blammed"],
 			['Satin Panties', "High", "Milf"],
@@ -38,7 +44,7 @@ class StoryMenuState extends MusicBeatState
 	}
 	var curDifficulty:Int = 1;
 
-	public static var weekUnlocked:Array<Bool> = [];
+	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true];
 
 	var weekCharacters:Array<Dynamic> = [
 		['', 'bf', 'gf'],
@@ -51,7 +57,7 @@ class StoryMenuState extends MusicBeatState
 	];
 
 	var weekNames:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/weekNames'));
-
+	
 	var txtWeekTitle:FlxText;
 
 	var curWeek:Int = 0;
@@ -70,12 +76,12 @@ class StoryMenuState extends MusicBeatState
 
 	function unlockWeeks():Array<Bool>
 	{
-		var weeks:Array<Bool> = [];
-		//#if debug
+		var weeks:Array<Bool> = [true, true, true, true, true, true, true];
+		#if debug
 		for(i in 0...weekNames.length)
 			weeks.push(true);
 		return weeks;
-		//#end
+		#end
 		
 		weeks.push(true);
 
@@ -92,7 +98,7 @@ class StoryMenuState extends MusicBeatState
 
 		#if windows
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Story Mode Menu", null);
+		DiscordClient.changePresence("In Story Mode Menu", null);
 		#end
 
 		transIn = FlxTransitionableState.defaultTransIn;
@@ -477,7 +483,7 @@ class StoryMenuState extends MusicBeatState
 
 	public static function unlockNextWeek(week:Int):Void
 	{
-		if(week <= weekData().length - 1 /*&& FlxG.save.data.weekUnlocked == week*/)
+		if(week <= weekData().length - 1 && FlxG.save.data.weekUnlocked == week)
 		{
 			weekUnlocked.push(true);
 			trace('Week ' + week + ' beat (Week ' + (week + 1) + ' unlocked)');

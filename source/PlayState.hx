@@ -86,6 +86,7 @@ class PlayState extends MusicBeatState
 	public static var curStage:String = '';
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
+	public static var isRushMode:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
@@ -292,7 +293,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
-		if (!isStoryMode)
+		if (!isStoryMode && !isRushMode)
 		{
 			sicks = 0;
 			bads = 0;
@@ -361,7 +362,15 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			detailsText = "Freeplay";
+			if (isRushMode)
+				{
+					detailsText = "Rush Mode: At " + storyWeek;
+				}
+			else
+			{
+				detailsText = "Freeplay";
+			}
+			
 		}
 
 		// String for when the game is paused
@@ -458,20 +467,11 @@ class PlayState extends MusicBeatState
 			case 'tutorial':
 				dialogue = ["Hey you're pretty cute.", 'Use the arrow keys to keep up \nwith me singing.'];
 			case 'bopeebo':
-				dialogue = [
-					'HEY!',
-					"You think you can just sing\nwith my daughter like that?",
-					"If you want to date her...",
-					"You're going to have to go \nthrough ME first!"
-				];
+				dialogue = CoolUtil.coolTextFile(Paths.txt('data/bopeebo/dialogue'));
 			case 'fresh':
-				dialogue = ["Not too shabby boy.", ""];
-			case 'dadbattle':
-				dialogue = [
-					"gah you think you're hot stuff?",
-					"If you can beat me here...",
-					"Only then I will even CONSIDER letting you\ndate my daughter!"
-				];
+				dialogue = CoolUtil.coolTextFile(Paths.txt('data/fresh/dialogue'));
+			case 'milf':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('data/milf/dialogue'));
 			case 'senpai':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('data/senpai/senpaiDialogue'));
 			case 'roses':
@@ -1273,55 +1273,65 @@ class PlayState extends MusicBeatState
 
 		trace('starting');
 
-		var storyskipthing = isStoryMode && FlxG.save.data.storycut;
-		var freeplayskipthing = !isStoryMode && FlxG.save.data.freeplaycut;
+		//var storyskipthing = isStoryMode && FlxG.save.data.storycut;
+		//var freeplayskipthing = !isStoryMode && FlxG.save.data.freeplaycut;
 
-		if (storyskipthing || freeplayskipthing)
+		//if (storyskipthing || freeplayskipthing)
 
-	//	if (isStoryMode)
+		if (isStoryMode && GameOverSubstate.skipCutscene == false)
 		{
-			switch (StringTools.replace(curSong, " ", "-").toLowerCase())
-			{
-				case "winter-horrorland":
-					var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
-					add(blackScreen);
-					blackScreen.scrollFactor.set();
-					camHUD.visible = false;
-
-					new FlxTimer().start(0.1, function(tmr:FlxTimer)
+			//var GameOverSubstate.skipCutscene != false;
+					switch (StringTools.replace(curSong, " ", "-").toLowerCase())
 					{
-						remove(blackScreen);
-						FlxG.sound.play(Paths.sound('Lights_Turn_On'));
-						camFollow.y = -2050;
-						camFollow.x += 200;
-						FlxG.camera.focusOn(camFollow.getPosition());
-						FlxG.camera.zoom = 1.5;
+						case "winter-horrorland":
+						var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
+						add(blackScreen);
+						blackScreen.scrollFactor.set();
+						camHUD.visible = false;
 
-						new FlxTimer().start(0.8, function(tmr:FlxTimer)
+						new FlxTimer().start(0.1, function(tmr:FlxTimer)
 						{
-							camHUD.visible = true;
 							remove(blackScreen);
-							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
-								ease: FlxEase.quadInOut,
-								onComplete: function(twn:FlxTween)
-								{
+							FlxG.sound.play(Paths.sound('Lights_Turn_On'));
+							camFollow.y = -2050;
+							camFollow.x += 200;
+							FlxG.camera.focusOn(camFollow.getPosition());
+							FlxG.camera.zoom = 1.5;
+
+							new FlxTimer().start(0.8, function(tmr:FlxTimer)
+							{
+								camHUD.visible = true;
+								remove(blackScreen);
+								FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
+									ease: FlxEase.quadInOut,
+									onComplete: function(twn:FlxTween)
+									{
+
 									startCountdown();
-								}
+									}
 							});
 						});
 					});
-				case 'senpai':
-					schoolIntro(doof);
-				case 'roses':
-					FlxG.sound.play(Paths.sound('ANGRY'));
-					schoolIntro(doof);
-				case 'thorns':
-					schoolIntro(doof);
-				case 'mii':
-					testintro(doof);
-				default:
-					startCountdown();
-			}
+					case 'senpai':
+						schoolIntro(doof);
+					case 'roses':
+						FlxG.sound.play(Paths.sound('ANGRY'));
+						schoolIntro(doof);
+					case 'thorns':
+						schoolIntro(doof);
+					case 'mii':
+						testintro(doof);
+					case 'bopeebo':
+						GameOverSubstate.skipCutscene = true;
+						testintro(doof);
+					case 'fresh':
+						GameOverSubstate.skipCutscene = true;
+						testintro(doof);
+					case 'milf':
+						testintro(doof);
+					default:
+						startCountdown();
+					}
 		}
 		else
 		{
@@ -2488,12 +2498,12 @@ class PlayState extends MusicBeatState
 			paused = true;
 
 			// 1 / 1000 chance for Gitaroo Man easter egg
-			if (FlxG.random.bool(0.1))
-			{
-				trace('GITAROO MAN EASTER EGG');
-				FlxG.switchState(new GitarooPause());
-			}
-			else
+			//if (FlxG.random.bool(0.1))
+			//{
+			//	trace('GITAROO MAN EASTER EGG');
+			//	FlxG.switchState(new GitarooPause());
+			//}
+			//else
 				openSubState(new PauseSubState(player.getScreenPosition().x, player.getScreenPosition().y));
 		}
 
@@ -3300,6 +3310,11 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
+		if (GameOverSubstate.skipCutscene == true)
+			{
+				GameOverSubstate.skipCutscene = false;
+			}
+		
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, releaseInput);
 		if (useVideo)
@@ -3311,10 +3326,11 @@ class PlayState extends MusicBeatState
 		}
 
 		if (isStoryMode)
+		{
 			campaignMisses = misses;
-
-		if (!loadRep)
-			rep.SaveReplay(saveNotes, saveJudge, replayAna);
+		}
+		//if (!loadRep)
+		//	rep.SaveReplay(saveNotes, saveJudge, replayAna);
 		else
 		{
 			PlayStateChangeables.botPlay = false;
